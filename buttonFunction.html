@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>algo</title>
+</head>
+<body>
+	<p><span id="m">7000000</span><input type="text" id="amount"></p>
+
+	<p><input type="text" id="l1mo"> </p>
+
+	<p><span id="l1i">interest</span><input type="text" id="l1in"> </p>
+
+	<p><span id="l1c">cycle</span><input type="text" id="l1cy"></p>
+
+	<button id="but">SEE</button>
+
+	<script type="text/javascript">
+		
+		document.getElementById("but").onclick = function(){
+			var oamount = "";
+			var lo1i = "";
+			var lo1c = "";
+			var loan1 = "";
+			oamount = document.getElementById("amount").value;
+			lo1i = document.getElementById("l1in").value;
+			lo1c = document.getElementById("l1cy").value;
+			loan1 = document.getElementById("l1mo").value;
+			oamount = oamount -((loan1/lo1c)*(lo1i/100)) ;
+			document.getElementById("m").innerHTML = oamount ;
+
+		}	
+		
+	</script>
+
+	
+</form>
+
+
+</body>
+</html>
