@@ -35,15 +35,15 @@ class loan { public:
     }
         void inloan()
     {
-        cout<<"\nenter no. of cycles:" ;
+        cout<<"\nEnter no. of cycles:" ;
         cin>>cycle ;
-        cout<<"\nenter amount:" ;
+        cout<<"\nEnter amount:" ;
         cin>>amount ;
-        cout<<"\nenter intrest %;" ;
+        cout<<"\nEnter intrest %;" ;
         cin>>intrest ;
-        cstart=c+1 ;
+        cstart=c ;
         cend=c+1+cycle ;
-        pay=(amount+(amount*intrest/100))/cycle  ;
+        pay=(amount/cycle)+(amount*intrest/100) ;
     }
 
            };
@@ -59,12 +59,12 @@ class asset { public:
     }
 
     void inasset()
-    {   cout<<"\nenter ownerid" ;
-        cout<<"\nenter profit:" ;
+    {   cout<<"\nEnter ownerid" ;
+        cout<<"\nEnter profit:" ;
         cin>>profit;
-        cout<<"\nenter price bought:";
+        cout<<"\nEnter price bought:";
         cin>>cp;
-        cout<<"\nenter selling price:" ;
+        cout<<"\nEnter selling price:" ;
         cin>>sp ;
         start=c+1;
         
@@ -76,36 +76,40 @@ class asset { public:
 
 int main()
 {  
-    MNC mnc[1] ;
-    bank b[1] ; loan l[1][1]; asset a[10] ;
-    for(c=0;c<2;c++)
-    {  cout<<"\nsubcycle"<<c+1 ;
+    MNC mnc[2] ;
+    bank b[2] ; loan l[2][2]; asset a[10] ;
+    for(c=0;c<5;c++)
+    {  cout<<"\nSubcycle :"<<c+1 ;
        if((c<=4)||((c>=8)&&(c<=12))||((c>=16)&&(c<=20)))
        {
-           for(int i=0;i<1;i++)
+           for(int i=0;i<2;i++)
            {
-               cout<<"\nMNC"<<i+1<<"\n"<<"balance:"<<mnc[i].moneym<<"\nloan taken? y/n" ;
-               char c;
-               cin>>c;
-               if((c=='y')||(c=='y'))
+               cout<<"\nMNC "<<i+1<<"\n"<<" balance:"<<mnc[i].moneym<<"\nLoan taken? y/n" ;
+               char c1;
+               cin>>c1;
+               if((c1=='y')||(c1=='y'))
                {
-                   cout<<"\n enter bank no." ;
+                   cout<<"\nEnter bank no:" ;
                    int x;
                    cin>>x;
                    x=x-1;
                    l[i][x].inloan() ;
                    b[x].moneyb=b[x].moneyb-l[i][x].amount ;
+                   mnc[i].moneym=mnc[i].moneym+l[i][x].amount ;
                    
                }
-               for(int j=0;j<1;j++)
-               {          cout<<"\nbank"<<j+1<<"balance:"<<b[j].moneyb ;
+               for(int j=0;j<2;j++)
+               {          
                    
-                          if((c>=(l[i][j].cstart))&&(c<=(l[i][j].cend)))
-                      
-                          b[j].moneyb=b[j].moneyb+l[i][j].pay ; mnc[i].moneym=mnc[i].moneym-l[i][j].pay ;
-                      
+                   if((c>(l[i][j].cstart))&&(c<(l[i][j].cend)))
+                       
+                       {b[j].moneyb=b[j].moneyb+l[i][j].pay ;} 
+
+
+                    if((c>=(l[i][j].cstart))&&(c<(l[i][j].cend-1)))
+                        mnc[i].moneym=mnc[i].moneym-l[i][j].pay ;
+                        cout<<"\nbank"<<j+1<<"balance:"<<b[j].moneyb ;
                }
-               
            }
            for(int d=0;d<10;d++)
            {
@@ -119,15 +123,15 @@ int main()
        }
       else
        {
-           for(int i=0;i<1;i++)
-           {   cout<<"\nMNC"<<i+1<<"\nbalance:"<<mnc[i].moneym ;
+           for(int i=0;i<2;i++)
+           {   cout<<"\nMNC "<<i+1<<" balance:"<<mnc[i].moneym ;
                
-               cout<<"\nwant to buy asset?y/n";
+               cout<<"\nWant to buy asset?y/n";
                char ch;
                cin>>ch;
                 if((ch=='y')||(ch=='Y'))
                 {
-                    cout<<"\nenter assest id" ;
+                    cout<<"\nEnter assest id" ;
                     int q ;
                     cin>>q ;
                     q--;
@@ -138,13 +142,17 @@ int main()
                     
            
                 }
-               for(int j=0;j<1;j++)
-               {          cout<<"\nbank"<<j+1<<"balance:"<<b[j].moneyb ;
+               for(int j=0;j<2;j++)
+               {          
                    
-                   if((c>=(l[i][j].cstart))&&(c<=(l[i][j].cend)))
+                   if((c>(l[i][j].cstart))&&(c<(l[i][j].cend)))
                        
-                       b[j].moneyb=b[j].moneyb+l[i][j].pay ; mnc[i].moneym=mnc[i].moneym-l[i][j].pay ;
-                   
+                       {b[j].moneyb=b[j].moneyb+l[i][j].pay ;} 
+
+
+                    if((c>=(l[i][j].cstart))&&(c<(l[i][j].cend-1)))
+                        mnc[i].moneym=mnc[i].moneym-l[i][j].pay ;
+                        cout<<"\nbank"<<j+1<<"balance:"<<b[j].moneyb ;
                }
                
 
