@@ -60,14 +60,15 @@ class asset { public:
 
     void inasset()
     {   cout<<"\nEnter ownerid" ;
-        cin>>ownerid ;
+        cin>>ownerid;
+
         cout<<"\nEnter profit:" ;
         cin>>profit;
         cout<<"\nEnter price bought:";
         cin>>cp;
         cout<<"\nEnter selling price:" ;
         cin>>sp ;
-        start=c+1;
+        start=c;
         
     }
 
@@ -79,7 +80,7 @@ int main()
 {  
     MNC mnc[2] ;
     bank b[2] ; loan l[2][2]; asset a[10] ;
-    for(c=0;c<5;c++)
+    for(c=0;c<20;c++)
     {  cout<<"\nSubcycle :"<<c+1 ;
        if((c<=4)||((c>=8)&&(c<=12))||((c>=16)&&(c<=20)))
        {
@@ -158,6 +159,8 @@ int main()
                
 
                
+           
+
            }
            for(int d=0;d<10;d++)
            {
