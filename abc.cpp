@@ -60,6 +60,7 @@ class asset { public:
 
     void inasset()
     {   cout<<"\nEnter ownerid" ;
+        cin>>ownerid ;
         cout<<"\nEnter profit:" ;
         cin>>profit;
         cout<<"\nEnter price bought:";
