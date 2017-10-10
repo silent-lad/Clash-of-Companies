@@ -54,14 +54,13 @@ class asset { public:
     
     asset()
     {
-        ownerid=0 ;
+        ownerid=-1 ;
         sp=0; cp=0 ; profit=0 ; bp=0 ; start=100;
     }
 
     void inasset()
     {   cout<<"\nEnter ownerid" ;
         cin>>ownerid;
-
         cout<<"\nEnter profit:" ;
         cin>>profit;
         cout<<"\nEnter price bought:";
@@ -71,22 +70,22 @@ class asset { public:
         start=c;
         
     }
-
+    
 
 };
 
 
 int main()
 {  
-    MNC mnc[2] ;
-    bank b[2] ; loan l[2][2]; asset a[10] ;
+    MNC mnc[10] ;
+    bank b[10] ; loan l[10][10]; asset a[10] ;
     for(c=0;c<20;c++)
-    {  cout<<"\nSubcycle :"<<c+1 ;
+    {  cout<<"\n\nSubcycle : "<<c+1<<"\n" ;
        if((c<=4)||((c>=8)&&(c<=12))||((c>=16)&&(c<=20)))
        {
-           for(int i=0;i<2;i++)
+           for(int i=0;i<10;i++)
            {
-               cout<<"\nMNC "<<i+1<<"\n"<<" balance:"<<mnc[i].moneym<<"\nLoan taken? y/n" ;
+               cout<<"\nMNC :"<<i+1<<" balance:"<<mnc[i].moneym<<"\nLoan taken? y/n" ;
                char c1;
                cin>>c1;
                if((c1=='y')||(c1=='y'))
@@ -100,7 +99,7 @@ int main()
                    mnc[i].moneym=mnc[i].moneym+l[i][x].amount ;
                    
                }
-               for(int j=0;j<2;j++)
+               for(int j=0;j<10;j++)
                {          
                    
                    if((c>(l[i][j].cstart))&&(c<(l[i][j].cend)))
@@ -125,7 +124,7 @@ int main()
        }
       else
        {
-           for(int i=0;i<2;i++)
+           for(int i=0;i<10;i++)
            {   cout<<"\nMNC "<<i+1<<" balance:"<<mnc[i].moneym ;
                
                cout<<"\nWant to buy asset?y/n";
@@ -133,7 +132,7 @@ int main()
                cin>>ch;
                 if((ch=='y')||(ch=='Y'))
                 {
-                    cout<<"\nEnter assest id" ;
+                    cout<<"\nEnter assest id :" ;
                     int q ;
                     cin>>q ;
                     q--;
@@ -144,7 +143,7 @@ int main()
                     
            
                 }
-               for(int j=0;j<2;j++)
+               for(int j=0;j<10;j++)
                {          
                    
                    if((c>(l[i][j].cstart))&&(c<(l[i][j].cend)))
