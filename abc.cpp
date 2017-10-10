@@ -5,26 +5,30 @@
 using namespace std ;
 int c;
 
-class MNC {  public:
+class MNC 
+{   public:
     float moneym ;
     MNC()
     {
         moneym=10000 ;
     }
     
-} ;
+};
 
 
-class bank { public:
+class bank 
+{   public:
     float moneyb ;
      bank()
     {
         moneyb=10000 ;
     }
     
-           };
+};
 
-class loan { public:
+class loan 
+{
+	public:
     int cycle,cstart,cend ;
     float intrest,amount ;
     float pay;
@@ -46,11 +50,14 @@ class loan { public:
         pay=(amount/cycle)+(amount*intrest/100) ;
     }
 
-           };
+};
 
-class asset { public:
+class asset 
+{ 
+	public:
     int ownerid,start ;
     float sp,cp,profit,bp;
+    float bech;
     
     asset()
     {
@@ -86,10 +93,10 @@ int main()
        {
            for(int i=0;i<2;i++)
            {
-               cout<<"\nMNC "<<i+1<<"\n"<<" balance:"<<mnc[i].moneym<<"\nLoan taken? y/n" ;
+               cout<<"\nMNC "<<i+1<<"\n"<<" balance:"<<mnc[i].moneym<<"\n"<<"\nWant to take Loan? y/n " ;
                char c1;
                cin>>c1;
-               if((c1=='y')||(c1=='y'))
+               if((c1=='Y')||(c1=='y'))
                {
                    cout<<"\nEnter bank no:" ;
                    int x;
@@ -100,6 +107,22 @@ int main()
                    mnc[i].moneym=mnc[i].moneym+l[i][x].amount ;
                    
                }
+               cout<<"\nWant to sell asset? y/n" ;
+               char c2;
+               cin>>c2;
+               if((c2=='Y')||(c2=='y'))
+               {
+				   cout<<"\nEnter asset id:";
+				   int a_id;
+				   cin>>a_id;
+				   cout<<"\nWhich bank do you wan to sell it to?" ;
+				   int b_id ; 
+				   cin>>b_id;
+				   int tr=a[a_id-1].sp;
+				   mnc[i].moneym = mnc[i].moneym+tr;
+				   b[b_id-1].moneyb= b[b_id-1].moneyb - tr;
+				   
+			   }
                for(int j=0;j<2;j++)
                {          
                    
@@ -128,11 +151,11 @@ int main()
            for(int i=0;i<2;i++)
            {   cout<<"\nMNC "<<i+1<<" balance:"<<mnc[i].moneym ;
                
-               cout<<"\nWant to buy asset?y/n";
+               cout<<"\nWant to buy asset?y/n ";
                char ch;
                cin>>ch;
                 if((ch=='y')||(ch=='Y'))
-                {
+				{
                     cout<<"\nEnter assest id" ;
                     int q ;
                     cin>>q ;
@@ -140,10 +163,7 @@ int main()
                     a[q].inasset() ;
                     mnc[a[q].ownerid-1].moneym=mnc[a[q].ownerid-1].moneym-a[q].bp-a[q].cp ;
                     
-                    
-                    
-           
-                }
+               }
                for(int j=0;j<2;j++)
                {          
                    
@@ -156,12 +176,8 @@ int main()
                         mnc[i].moneym=mnc[i].moneym-l[i][j].pay ;
                         cout<<"\nbank"<<j+1<<"balance:"<<b[j].moneyb ;
                }
-               
-
-               
-           
-
            }
+           
            for(int d=0;d<10;d++)
            {
                if(c>=a[d].start) { mnc[a[d].ownerid-1].moneym=mnc[a[d].ownerid-1].moneym+a[d].profit ;}
@@ -169,9 +185,6 @@ int main()
        
       
            }
-    
-     
-       }
-    
+		}
     }
 }
