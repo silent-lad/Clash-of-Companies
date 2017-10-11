@@ -43,7 +43,7 @@ class loan { public:
         cin>>intrest ;
         cstart=c ;
         cend=c+1+cycle ;
-        pay=(amount/cycle)+(amount*intrest/100) ;
+        pay=(amount/cycle)+(amount*intrest/100)/cycle ;
     }
 
            };
