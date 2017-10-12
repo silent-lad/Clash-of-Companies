@@ -39,10 +39,10 @@ class loan { public:
         cin>>cycle ;
         cout<<"\nEnter amount:" ;
         cin>>amount ;
-        cout<<"\nEnter intrest %;" ;
+        cout<<"\nEnter intrest %: " ;
         cin>>intrest ;
-        cstart=c ;
-        cend=c+1+cycle ;
+        cstart=((c/4)*4)+3 ;
+        cend=cstart+1+cycle ;
         pay=(amount/cycle)+(amount*intrest/100)/cycle ;
     }
 
@@ -92,15 +92,21 @@ int main()
                    int x;
                    cin>>x;
                    x=x-1;
+                   if(c>l[i][x].cend)
+                   { 
                    l[i][x].inloan() ;
                    b[x].moneyb=b[x].moneyb-l[i][x].amount ;
                    mnc[i].moneym=mnc[i].moneym+l[i][x].amount ;
+                   }
+                   else
+                    {cout<<"\nloan not repaid\n" ; 
                    
-               }
+
+                    }
                for(int j=0;j<10;j++)
                {          
                    
-                   if((c>(l[i][j].cstart))&&(c<(l[i][j].cend)))
+                   if((c>=(l[i][j].cstart))&&(c<(l[i][j].cend-1)))
                        
                        {b[j].moneyb=b[j].moneyb+l[i][j].pay ;} 
 
@@ -139,13 +145,27 @@ int main()
            {
                if((c>=a[d].start)&&(a[d].ownerid>=0)) { mnc[a[d].ownerid-1].moneym=mnc[a[d].ownerid-1].moneym+a[d].profit ;}
                
-               
+                
                
            }
-           
+          if((c+1)%4==0)
+          { cout<<"\n\nAfter end of subcycle :"<<c+1 ;
+            for(int i=0;i<10;i++)
+            {
+               cout<<"\nMNC :"<<i+1<<" Balance: "<<mnc[i].moneym ;
+            }
+            for(int j=0;j<10;j++)
+            {
+              cout<<"\nBank :"<<j+1<<" Balance: "<<b[j].moneyb ;
+            }
+            
+
+          } 
 
        }
+       }
       else
+      
        {
            for(int i=0;i<10;i++)
            {   cout<<"\nMNC "<<i+1<<" balance:"<<mnc[i].moneym ;
@@ -171,7 +191,7 @@ int main()
                for(int j=0;j<10;j++)
                {          
                    
-                   if((c>(l[i][j].cstart))&&(c<(l[i][j].cend)))
+                   if((c>=(l[i][j].cstart))&&(c<(l[i][j].cend-1)))
                        
                        {b[j].moneyb=b[j].moneyb+l[i][j].pay ;} 
 
