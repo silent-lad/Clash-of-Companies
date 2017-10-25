@@ -6,7 +6,7 @@ using namespace std ;
 int c;
 
 class MNC {  public:
-    float moneym ;
+    int moneym ;
     MNC()
     {
         moneym=10000 ;
