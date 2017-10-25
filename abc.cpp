@@ -6,7 +6,7 @@ using namespace std ;
 int c;
 
 class MNC {  public:
-    float moneym ;
+    int moneym ;
     MNC()
     {
         moneym=10000 ;
@@ -16,7 +16,7 @@ class MNC {  public:
 
 
 class bank { public:
-    float moneyb ;
+    int moneyb ;
      bank()
     {
         moneyb=10000 ;
@@ -26,8 +26,8 @@ class bank { public:
 
 class loan { public:
     int cycle,cstart,cend ;
-    float intrest,amount ;
-    float pay;
+    int intrest,amount ;
+    int pay;
                loan()
     
     {
@@ -50,7 +50,7 @@ class loan { public:
 
 class asset { public:
     int ownerid,start ;
-    float sp,cp,profit,bp;
+    int sp,cp,profit,bp;
     
     asset()
     {
