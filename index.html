@@ -1,122 +1,125 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<title>Clash Of Companies</title>
-        <style>
-        table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
- th, td {
-    padding: 5px;
-    text-align: left;    
-        }
+
+    <head>
+        
+        <title>Reaction Timer</title>
+        
+        <style type="text/css">
             
-            h1 {
-	margin: 1em 0 0.5em 0;
-	font-weight: 600;
-	font-family: 'Titillium Web', sans-serif;
-	position: relative;  
-	font-size: 36px;
-	line-height: 40px;
-	padding: 15px 15px 15px 15%;
-	padding-left: 50px ;
-	color: #355681;
-	box-shadow: 
-		inset 0 0 0 1px rgba(53,86,129, 0.4), 
-		inset 0 0 5px rgba(53,86,129, 0.5),
-		inset -285px 0 35px white;
-	border-radius: 0 10px 0 10px;
-	background: #fff url(../images/bartoszkosowski.jpg) no-repeat center left;
-}
-	</style>
-	<script type="text/javascript"> 
-	
+            body {
+                
+                font-family: sans-serif;
+                
+            }
+        
+            #shape {
+                
+                width: 100px;
+                height: 100px;
+                background-color: red;
+                display: none;
+                position: relative;
+                
+            }
+            
+            .bold {
+                
+                font-weight: bold;
+                
+            }
+        
+        </style>
     
-    </script>
-       
-		</head>
-<body>
-	<h1 align="center">Clash of Companies</h1>
+    </head>
+
+    <body>
+        
+        <h1>Test Your Reactions!</h1>
+        
+        <p>Click on the boxes and circles as quickly as you can!</p>
+        
+        <p class="bold">Your time: <span id="timeTaken"></span></p>
+        
+        <div id="shape"></div>
+        
+        <script type="text/javascript">
+            
+            var start = new Date().getTime();
+            
+            function getRandomColor() {
+                
+                var letters = '0123456789ABCDEF'.split('');
     
-    <table >
-<tr>
+                var color = '#';
+    
+                for (var i = 0; i < 6; i++ ) {
+        
+                    color += letters[Math.floor(Math.random() * 16)];
+    
+                }
+    
+                return color;
 
-<th colspan="3">MNC</th>
-<th colspan="3">B1loan</th >	
-<th colspan="3">B2loan</th >	
-<th colspan="3">B3loan</th >	
-<th colspan="3">B4loan</th >	
-<th colspan="3">asset1</th >
-<th colspan="3">asset2</th >
-<th colspan="3">asset3</th>
-<th colspan="3">asset4</th>
+            }
+            
+            function makeShapeAppear() {
+                
+                var top = Math.random() * 400;
+                
+                var left = Math.random() * 400;
+                
+                var width = (Math.random() * 200) + 100;
+                
+                if (Math.random() > 0.5) {
+                    
+                    document.getElementById("shape").style.borderRadius = "50%";
+                    
+                } else {
+                    
+                    document.getElementById("shape").style.borderRadius = "0";
+                    
+                }
+                
+                document.getElementById("shape").style.backgroundColor = getRandomColor();
+                
+                document.getElementById("shape").style.width = width + "px";
+                
+                document.getElementById("shape").style.height = width + "px";
+                
+                document.getElementById("shape").style.top = top + "px";
+                
+                document.getElementById("shape").style.left = left + "px";
+    
+                document.getElementById("shape").style.display = "block";
+                
+                start = new Date().getTime();
 
-</tr>
-<td>ID</td>
-<td>addmoney</td>
-<td>Balance</td>        
-<td>INTREST%</td>
-<td>AMOUNT</td>
-<td>T.CYCLES</td>
-<td>INTREST%</td>
-<td>AMOUNT</td>
-<td>T.CYCLES</td>
-<td>INTREST%</td>
-<td>AMOUNT</td>
-<td>T.CYCLES</td>
-<td>INTREST%</td>
-<td>AMOUNT</td>
-<td>T.CYCLES</td>
-<td>OWNERID</td>
-<td>CPRICE</td>
-<td>cr.RATE</td>
-<td>OWNERID</td>
-<td>CPRICE</td>
-<td>cr.RATE</td>
-<td>OWNERID</td>
-<td>CPRICE</td>
-<td>cr.RATE</td>
-<td>OWNERID</td>
-<td>CPRICE</td>
-<td>cr.RATE</td>
+            }
+            
+            function appearAfterDelay() {
+                
+                setTimeout(makeShapeAppear, Math.random() * 2000);
+                
+            }
+            
+            appearAfterDelay();
+            
+            document.getElementById("shape").onclick = function() {
+                
+                document.getElementById("shape").style.display = "none";
+                
+                var end = new Date().getTime();
+                
+                var timeTaken = (end - start) / 1000;
+                
+                document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+                
+                appearAfterDelay();
+                
+            }
+            
+        </script>
+        
+    </body>
 
-<tr>
-	
-<td>1</td>
-<td><input type="text"></td>
-<td><input type="text"></td>    
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-<td><input type="text"></td>
-
-
-</tr>
-
-
-</table>
-
-</body>
 </html>
-
