@@ -5,7 +5,8 @@
 using namespace std ;
 int c;
 
-class MNC {  public:
+class MNC
+{  public:
     int moneym ;
     MNC()
     {
